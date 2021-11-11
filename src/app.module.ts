@@ -6,11 +6,19 @@ import { AccountModule } from './account/account.module';
 import { BalanceModule } from './balance/balance.module';
 import { WithdrawModule } from './withdraw/withdraw.module';
 import { DepositModule } from './deposit/deposit.module';
-
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { typeOrmConfig } from './config/ormconfig';
 
 @Module({
-  imports: [UserModule, AccountModule, BalanceModule, WithdrawModule, DepositModule],
+  imports: [
+    TypeOrmModule.forRoot(typeOrmConfig),
+    UserModule,
+    AccountModule,
+    BalanceModule,
+    WithdrawModule,
+    DepositModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
