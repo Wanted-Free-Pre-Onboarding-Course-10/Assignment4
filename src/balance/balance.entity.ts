@@ -6,7 +6,7 @@ import { Account } from 'src/account/account.entity';
 @Entity()
 export class Balance extends Base {
   @IsNotEmpty()
-  balance: Number;
+  balance: number;
 
   @OneToOne(() => Account)
   @JoinColumn()
