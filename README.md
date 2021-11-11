@@ -1,12 +1,17 @@
 # Assignment4
 원티드 X 위코드 프리 온보딩 2주차 기업형 과제(8퍼센트)
 
-
 ## 설명
 
 본 프로젝트는 원티드x위코드 백엔드 프리온보딩  [8퍼센트]에서 출제한 과제를 기반으로 제작 되었습니다.
 
 [과제 소개](https://www.notion.so/wecode/8-75d7f2d760ce4382a4fb6366bdb4f139)
+
+## 코드 컨벤션
+[코드 컨벤션](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EC%BD%94%EB%93%9C%EC%BB%A8%EB%B2%A4%EC%85%98)
+
+## 시나리오
+[시나리오](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4)
 
 ## 요구사항 분석
 **REST API 기능**
