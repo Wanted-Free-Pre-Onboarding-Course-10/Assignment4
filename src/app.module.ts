@@ -6,11 +6,11 @@ import { AccountModule } from './account/account.module';
 import { BalanceModule } from './balance/balance.module';
 import { WithdrawModule } from './withdraw/withdraw.module';
 import { DepositModule } from './deposit/deposit.module';
-import { AccoutController } from './accout/accout.controller';
+
 
 @Module({
   imports: [UserModule, AccountModule, BalanceModule, WithdrawModule, DepositModule],
-  controllers: [AppController, AccoutController],
+  controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
