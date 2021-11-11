@@ -1,28 +1,26 @@
 import { Account } from 'src/account/account.entity';
 import { Withdraw } from 'src/withdraw/withdraw.entity';
 import {
-    CreateDateColumn,
-    Entity,
-    UpdateDateColumn,
-    ManyToOne,
-    OneToOne,
-    JoinColumn
+  CreateDateColumn,
+  Entity,
+  UpdateDateColumn,
+  ManyToOne,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Base } from '../base.entity/base.entity';
 @Entity()
 export class Deposit extends Base {
+  accountId: string;
 
-    accountId: string;
+  withdrawId: string;
 
-    withdrawId: string;
+  balance: string;
 
-    balance: string;
+  @ManyToOne(() => Account, (account) => account.id, { onDelete: 'CASCADE' })
+  account: Account;
 
-    @ManyToOne(() => Account, account => account.id, { onDelete: 'CASCADE' })
-    account: Account;
-
-    @OneToOne(() => Withdraw)
-    @JoinColumn()
-    withdraw: Withdraw;
-
+  @OneToOne(() => Withdraw)
+  @JoinColumn()
+  withdraw: Withdraw;
 }
