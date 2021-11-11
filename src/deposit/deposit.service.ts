@@ -30,7 +30,7 @@ export class DepositService {
             });
     }
 
-    async update(updateQuestionInfo, user) {
+    async deposit(updateQuestionInfo, user) {
         const { depositAmount, accountNumber } = updateQuestionInfo;
 
         // 해당 계좌 정보 조회
@@ -50,7 +50,11 @@ export class DepositService {
             // 잔액 조회
             const nowBalance = await queryRunner.manager
                 .getRepository(Balance)
-                .findOne({ where: { account } });
+                .findOne({
+                    where: { account },
+                    relations: ['account']
+                }
+                );
             // 입금 내역 생성
             const newBalance = nowBalance.balance + depositAmount
             const deposit = await queryRunner.manager
