@@ -75,10 +75,11 @@
 
 ![]()
 
-## 사전 학습
-
-새로운 기술을 사용하기 전에 서로 다른 주제를 가지고 동료 학습을 진행했습니다.
-
+## 개발도중 고민들
+- [DB설계시 고민](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/DB-%EC%84%A4%EA%B3%84)
+- [DB 동시성 문제 고민](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EB%8F%88%EC%9D%98-%EB%AC%B4%EA%B2%B0%EC%84%B1%EC%9D%84-%EC%A7%80%ED%82%A4%EB%8A%94-%EB%B0%A9%EB%B2%95)
+- [무결성 고민](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EB%AC%B4%EA%B2%B0%EC%84%B1%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B4%EA%B3%A0,-%EC%9A%B0%EB%A6%AC-%EC%84%9C%EB%B9%84%EC%8A%A4%EC%97%90-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%A0%81%EC%9A%A9%EC%8B%9C%ED%82%AC%EA%B2%83%EC%9D%B8%EA%B0%80%3F)
+- [입출금 로그 고민](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EC%9E%85%EC%B6%9C%EA%B8%88-%EB%82%B4%EC%97%AD%EC%9D%84-%EB%A1%9C%EA%B7%B8%EB%A1%9C-%EB%82%A8%EA%B8%B0%EA%B8%B0)
 
 ## 협업 방식
 
@@ -89,7 +90,4 @@
 
 
 ## 테스트 
-
-
-## 개발도중 고민들
 
