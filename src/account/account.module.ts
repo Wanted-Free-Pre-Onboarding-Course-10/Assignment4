@@ -8,10 +8,17 @@ import { WithdrawQueryService } from '../withdraw/withdraw.query.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DepositQueryRepository } from '../deposit/deposit.query.repository';
 import { WithdrawQueryRepository } from '../withdraw/withdraw.query.repository';
+import { Account } from './account.entity';
+import { AccountQueryRepository } from './account.query.repository';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([DepositQueryRepository, WithdrawQueryRepository]),
+    TypeOrmModule.forFeature([
+      DepositQueryRepository,
+      WithdrawQueryRepository,
+      AccountQueryRepository,
+      Account,
+    ]),
   ],
   controllers: [AccountController],
   providers: [
