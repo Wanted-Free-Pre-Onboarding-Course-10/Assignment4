@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Body, Controller, Post, Put, UseGuards, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UserDto } from './dto/user.dto';
@@ -24,4 +25,17 @@ export class UserController {
   test(@GetUser() user: User) {
       console.log('user', user);
   } 
+=======
+import { Body, Controller, Post } from '@nestjs/common';
+import { DepositService } from 'src/deposit/deposit.service';
+
+@Controller('user')
+export class UserController {
+    constructor(private depositService: DepositService) { }
+
+    @Post('/')
+    withdraw() {
+
+    }
+>>>>>>> develop
 }

@@ -1,24 +1,17 @@
 import { BeforeInsert, Column, Entity, OneToMany, Unique } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { IsNotEmpty, IsString, Length } from 'class-validator';
 import { Base } from '../base.entity/base.entity';
 import { Account } from 'src/account/account.entity';
 @Entity()
 @Unique(['username'])
 export class User extends Base {
-  @IsNotEmpty()
-  @IsString()
-  @Length(5, 50)
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: false, name: 'username' })
   username: string;
 
-  @IsNotEmpty()
-  @IsString()
-  @Length(5, 50)
-  @Column()
+  @Column({ nullable: false, name: 'password' })
   password: string;
 
-  @OneToMany(() => Account, (account) => account.userId)
+  @OneToMany(() => Account, (account) => account.user)
   accounts: Account[];
 
   @BeforeInsert()

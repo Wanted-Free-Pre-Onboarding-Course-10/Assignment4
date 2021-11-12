@@ -1,29 +1,40 @@
-import { Entity, ManyToOne, OneToMany, OneToOne, JoinColumn } from 'typeorm';
+import {
+    Entity,
+    ManyToOne,
+    OneToMany,
+    OneToOne,
+    JoinColumn,
+    Column,
+} from 'typeorm';
 import { Base } from '../base.entity/base.entity';
 import { User } from '../user/user.entity';
 import { Deposit } from 'src/deposit/deposit.entity';
 import { Withdraw } from 'src/withdraw/withdraw.entity';
 import { Balance } from 'src/balance/balance.entity';
+
 @Entity()
 export class Account extends Base {
-  userId: number;
+    @Column({ nullable: false, name: 'bankname' })
+    bankname: string;
 
-  balanceId: number;
+    @Column({ nullable: false, name: 'account_number' })
+    accountNumber: string;
 
-  bankname: string;
+    @OneToMany(() => Deposit, (deposit) => deposit.account)
+    deposits: Deposit[];
 
-  accountNumber: string;
+    @OneToMany(() => Withdraw, (withdraw) => withdraw.account)
+    withdraws: Withdraw[];
 
-  @OneToMany(() => Deposit, (deposit) => deposit.accountId)
-  deposits: Deposit[];
+    @ManyToOne(() => User, (user) => user.accounts, { nullable: false })
+    @JoinColumn({
+        name: 'user_id',
+    })
+    user: User;
 
-  @OneToMany(() => Withdraw, (withdraw) => withdraw.accountId)
-  withdraws: Withdraw[];
-
-  @ManyToOne(() => User, (user) => user.accounts, { onDelete: 'CASCADE' })
-  user: User;
-
-  @OneToOne(() => Balance)
-  @JoinColumn()
-  balance: Balance;
+    @OneToOne(() => Balance, { nullable: false })
+    @JoinColumn({
+        name: 'balance_id',
+    })
+    balance: Balance;
 }
