@@ -12,9 +12,13 @@ export class AccountResolver {
   async getTransactionHistory(
     @Args(new ValidationPipe({ transform: true }))
     transactionHistoryPaginationRequest: TransactionHistoryPaginationRequest,
-  ): Promise<[TransactionHistory[], number]> {
-    return this.accountQueryService.getTransactionHistory(
-      transactionHistoryPaginationRequest,
+  ): Promise<TransactionHistory[]> {
+    const [transactionHistory, count] =
+      await this.accountQueryService.getTransactionHistory(
+        transactionHistoryPaginationRequest,
+      );
+    return transactionHistory.sort((a, b) =>
+      a.transactionDate > b.transactionDate ? 1 : -1,
     );
   }
 }

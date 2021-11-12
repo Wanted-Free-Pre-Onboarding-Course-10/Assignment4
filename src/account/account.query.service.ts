@@ -20,21 +20,8 @@ export class AccountQueryService {
       transactionHistoryPaginationRequest,
     );
 
-    const depositsPaginationRequest =
-      this.depositQueryService.getTransactionHistory(
-        transactionHistoryPaginationRequest,
-        accountId,
-      );
-
-    const withdrawPaginationRequest =
-      this.withdrawQueryService.getTransactionHistory(
-        transactionHistoryPaginationRequest,
-        accountId,
-      );
-
     const searchType = transactionHistoryPaginationRequest.searchType;
 
-    console.log(searchType);
     if (searchType === 'ALL') {
       const [deposits, depositCount] =
         await this.depositQueryService.getTransactionHistory(

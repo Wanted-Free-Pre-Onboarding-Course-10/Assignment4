@@ -1,10 +1,10 @@
+import { IsPositive } from 'class-validator';
 
 export class UpdateWithRemitDto {
+  @IsPositive()
+  withdrawAmount: number;
 
-    withdrawAmount: number;
+  toAccountNumber: string;
 
-    toAccountNumber: string;
-
-    fromAccountNumber: string;
-
+  fromAccountNumber: string;
 }
