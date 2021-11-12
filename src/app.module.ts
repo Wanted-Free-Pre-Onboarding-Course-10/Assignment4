@@ -8,6 +8,7 @@ import { WithdrawModule } from './withdraw/withdraw.module';
 import { DepositModule } from './deposit/deposit.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/ormconfig';
+import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
   imports: [
@@ -17,6 +18,9 @@ import { typeOrmConfig } from './config/ormconfig';
     BalanceModule,
     WithdrawModule,
     DepositModule,
+    GraphQLModule.forRoot({
+      autoSchemaFile: 'schema.gpl',
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
