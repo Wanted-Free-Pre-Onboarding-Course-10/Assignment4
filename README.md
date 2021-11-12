@@ -76,7 +76,6 @@
 
 ![Copy of 8퍼센트](https://user-images.githubusercontent.com/81801012/141456569-5456cc6a-0318-4b71-8530-a3bf8f35455f.png)
 
-## 문제정의 및 시퀀스 다이어그램
 
 
 
