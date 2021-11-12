@@ -16,7 +16,11 @@ export class Deposit extends Base {
 
     withdrawId: string;
 
-    balance: string;
+    oldBalance: Number;
+
+    newBalance: Number;
+
+    amount: Number;
 
     @ManyToOne(() => Account, account => account.id, { onDelete: 'CASCADE' })
     account: Account;
