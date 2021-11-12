@@ -16,6 +16,7 @@ export class Withdraw extends Base {
 
   @ManyToOne(() => Account, (account) => account.withdraws, {
     nullable: false,
+    eager: false,
   })
   @JoinColumn({
     name: 'account_id',
