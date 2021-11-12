@@ -10,12 +10,12 @@ export class UserController {
     constructor(private userService: UserService) { }
 
     @Post('/signup')
-    signUp(@Body(ValidationPipe) userDto: UserDto): Promise<void> {
+    signUp(@Body(ValidationPipe) userDto: UserDto): Promise<string> {
         return this.userService.signUp(userDto);
     }
 
     @Put('/signin')
-    signIn(@Body(ValidationPipe) userDto: UserDto): Promise<{ accessToken: string }> {
+    signIn(@Body(ValidationPipe) userDto: UserDto): Promise<string> {
         return this.userService.signIn(userDto);
     }
 
