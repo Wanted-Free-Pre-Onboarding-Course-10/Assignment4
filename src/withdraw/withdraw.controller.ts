@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, Req } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UpdateWithDrawDto } from './dto/update.dto';
 import { WithdrawService } from './withdraw.service';
@@ -9,8 +9,8 @@ export class WithdrawController {
     constructor(private withDrawSeivce: WithdrawService) { }
 
     @Post('/')
-    withdraw(@Body() updateWithDrawDto: UpdateWithDrawDto) {
-        return this.withDrawSeivce.withdrawMe(updateWithDrawDto, 1);
+    withdraw(@Body() updateWithDrawDto: UpdateWithDrawDto, @Req() req) {
+        return this.withDrawSeivce.withdrawMe(updateWithDrawDto, req.user.id);
     }
 }
 

@@ -15,7 +15,7 @@ export class UserController {
     }
 
     @Put('/signin')
-    signIn(@Body(ValidationPipe) userDto: UserDto): Promise<string> {
+    signIn(@Body(ValidationPipe) userDto: UserDto): Promise<{accessToken:string}> {
         return this.userService.signIn(userDto);
     }
 

@@ -22,16 +22,16 @@ export class UserService {
 
 
     // == 로그인 == //
-    async signIn(userDto: UserDto): Promise<string> {
+    async signIn(userDto: UserDto): Promise<{accessToken:string}> {
         const { username, password } = userDto;
 
         const user = await this.userRepository.findOne({ username });
 
         if (user && await bcrypt.compare(password, user.password)) {
             const payload = { username };
-            await this.jwtService.sign(payload);
+            const accessToken = await this.jwtService.sign(payload);
 
-            return LOGIN_SUCCESS_MSG;
+            return {accessToken}
         }
         else throw new LoginFailException();
     }
