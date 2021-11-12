@@ -36,9 +36,7 @@ export class WithdrawService {
         const { withdrawAmount, accountNumber } = updateWithdrawInfo;
         console.log(withdrawAmount, accountNumber);
         // 해당 계좌 정보 조회
-        console.log("계좌번호로 해당 계좌 정보 조회-");
         const account = await this.findByAccountNumber(accountNumber);
-        console.log(account);
         if (account === undefined) {
             throw new Error("The account doesn't exist.");
         }
