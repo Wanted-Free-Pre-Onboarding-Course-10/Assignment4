@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Body, Controller, Post, Put, UseGuards, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UserDto } from './dto/user.dto';
@@ -8,34 +7,21 @@ import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
-  constructor(private userService: UserService) { }
-  
-  @Post('/signup')
-  signUp(@Body(ValidationPipe) userDto: UserDto): Promise<void>{
-    return this.userService.signUp(userDto);
-  }
+    constructor(private userService: UserService) { }
 
-  @Put('/signin')
-  signIn(@Body(ValidationPipe) userDto: UserDto): Promise<{accessToken:string}>{
-    return this.userService.signIn(userDto);
-  }
-
-  @Post('/test')
-  @UseGuards(AuthGuard())
-  test(@GetUser() user: User) {
-      console.log('user', user);
-  } 
-=======
-import { Body, Controller, Post } from '@nestjs/common';
-import { DepositService } from 'src/deposit/deposit.service';
-
-@Controller('user')
-export class UserController {
-    constructor(private depositService: DepositService) { }
-
-    @Post('/')
-    withdraw() {
-
+    @Post('/signup')
+    signUp(@Body(ValidationPipe) userDto: UserDto): Promise<void> {
+        return this.userService.signUp(userDto);
     }
->>>>>>> develop
+
+    @Put('/signin')
+    signIn(@Body(ValidationPipe) userDto: UserDto): Promise<{ accessToken: string }> {
+        return this.userService.signIn(userDto);
+    }
+
+    @Post('/test')
+    @UseGuards(AuthGuard())
+    test(@GetUser() user: User) {
+        console.log('user', user);
+    }
 }
