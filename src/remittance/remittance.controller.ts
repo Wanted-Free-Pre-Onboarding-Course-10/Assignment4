@@ -1,10 +1,9 @@
-
 import { Body, Controller, Post, UseGuards, Req } from '@nestjs/common';
 import { UpdateWithRemitDto } from './dto/update.dto';
 import { RemittanceService } from './remittance.service';
 import { AuthGuard } from '@nestjs/passport';
 @Controller('remittance')
-@UseGuards(AuthGuard())
+@UseGuards(AuthGuard('jwt'))
 export class RemittanceController {
     constructor(private remittanceService: RemittanceService) { }
 
@@ -14,4 +13,3 @@ export class RemittanceController {
     }
 
 }
-
