@@ -7,9 +7,8 @@ import { DepositQueryRepository } from './deposit.query.repository';
 import { Deposit } from '../deposit/deposit.entity';
 import { Account } from '../account/account.entity';
 import { User } from '../user/user.entity';
-
 import { Balance } from '../balance/balance.entity';
-
+import { Withdraw } from '../withdraw/withdraw.entity';
 @Module({
   imports: [
     TypeOrmModule.forFeature([
@@ -18,9 +17,10 @@ import { Balance } from '../balance/balance.entity';
       Deposit,
       Account,
       User,
+      Withdraw
     ]),
   ],
   controllers: [DepositController],
   providers: [DepositService, DepositQueryService],
 })
-export class DepositModule {}
+export class DepositModule { }

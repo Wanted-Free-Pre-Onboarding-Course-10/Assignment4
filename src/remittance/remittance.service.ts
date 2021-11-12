@@ -12,11 +12,11 @@ import { UpdateWithRemitDto } from './dto/update.dto';
 export class RemittanceService {
     // 생성자
     constructor(
-        @InjectRepository(Deposit) private depositRepository: Repository<Deposit>,
-        @InjectRepository(Balance) private balanceRepository: Repository<Balance>,
-        @InjectRepository(Account) private accountRepository: Repository<Account>,
-        @InjectRepository(Withdraw) private withdrawRepositry: Repository<Withdraw>,
-        private connection: Connection
+        @InjectRepository(Deposit) protected depositRepository: Repository<Deposit>,
+        @InjectRepository(Balance) protected balanceRepository: Repository<Balance>,
+        @InjectRepository(Account) protected accountRepository: Repository<Account>,
+        @InjectRepository(Withdraw) protected withdrawRepositry: Repository<Withdraw>,
+        protected connection: Connection
     ) { }
 
     // 계좌번호로 계좌 정보 조회

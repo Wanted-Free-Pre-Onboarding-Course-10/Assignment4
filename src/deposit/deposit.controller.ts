@@ -8,6 +8,6 @@ export class DepositController {
     @Post('/')
     deposite(@Body() updateDepositDto: UpdateDepositDto) {
         //jwt 해석해서 userid 넘겨줘야함
-        return this.depositService.deposit(updateDepositDto, 1);
+        return this.depositService.depositMe(updateDepositDto, 1);
     }
 }
