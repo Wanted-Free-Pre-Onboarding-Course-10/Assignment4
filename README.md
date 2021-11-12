@@ -80,7 +80,7 @@
 ![Copy of 8퍼센트](https://user-images.githubusercontent.com/81801012/141456569-5456cc6a-0318-4b71-8530-a3bf8f35455f.png)
 
 
-
+[ 시드 데이터](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EB%8D%94%EB%AF%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0)
 
 ## API
 [API문서](https://documenter.getpostman.com/view/13568025/UVC8Ckf6)
