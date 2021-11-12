@@ -4,71 +4,35 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Balance } from "../balance/balance.entity";
 import { Deposit } from "../deposit/deposit.entity";
 import { Account } from "../account/account.entity";
+import { Withdraw } from "../withdraw/withdraw.entity";
 import { User } from "../user/user.entity";
+import { RemittanceService } from "../remittance/remittance.service"
+export class DepositService extends RemittanceService {
 
-export class DepositService {
-
-
-    constructor(
-        @InjectRepository(Deposit) private depositRepository: Repository<Deposit>,
-        @InjectRepository(Balance) private balanceRepository: Repository<Balance>,
-        @InjectRepository(Account) private accountRepository: Repository<Account>,
-        private connection: Connection,
-    ) { }
-
-    async findByAccountNumber(accountNumber: string): Promise<any> {
-        return await this.accountRepository.findOne({
-            where: { accountNumber: accountNumber }
-        })
+    constructor(@InjectRepository(Deposit) protected depositRepository: Repository<Deposit>,
+        @InjectRepository(Balance) protected balanceRepository: Repository<Balance>,
+        @InjectRepository(Account) protected accountRepository: Repository<Account>,
+        @InjectRepository(Withdraw) protected withdrawRepositry: Repository<Withdraw>,
+        protected connection: Connection) {
+        super(depositRepository, balanceRepository, accountRepository, withdrawRepositry, connection);
     }
 
-    async authCheck(accountId: number, userId: number): Promise<any> {
-        return await this.accountRepository
-            .findOne({
-                where: { id: accountId, user: { id: userId } },
-                relations: ['user']
-            });
-    }
-
-    async deposit(updateDepositInfo, user) {
+    // 자기 계좌 입금
+    async depositMe(updateDepositInfo, user) {
         const { depositAmount, accountNumber } = updateDepositInfo;
         console.log(depositAmount, accountNumber);
         // 해당 계좌 정보 조회
         const account = await this.findByAccountNumber(accountNumber);
-        if (account === undefined) {
-            throw new Error("The account doesn't exist.");
-        }
-
-        // // 권한 조회
+        // 권한 조회
         const auth = await this.authCheck(account.id, user);
-        if (auth === undefined) {
-            throw new Error("You don't have edit permission");
-        }
         const queryRunner = this.connection.createQueryRunner();
         await queryRunner.connect();
         await queryRunner.startTransaction();
         try {
             // 잔액 조회
-            const exAccount = await queryRunner.manager
-                .getRepository(Account)
-                .findOne({
-                    where: { id: account.id },
-                    relations: ['balance']
-                }
-                );
-            // 입금 내역 생성
-            const oldBalance: number = exAccount.balance.balance;
-            const newBalance: number = exAccount.balance.balance + depositAmount
-            const depositInfo = { account: account, oldBalance: oldBalance, newBalance: newBalance, amount: depositAmount }
-            const deposit = await queryRunner.manager
-                .getRepository(Deposit)
-                .save(depositInfo);
-
-            // 잔액 수정
-            exAccount.balance.balance = newBalance;
-            const updateBalance = await queryRunner.manager
-                .getRepository(Balance)
-                .save(exAccount.balance);
+            const exAccount = await this.balanceCheck(queryRunner, account, depositAmount)
+            // 입금 내역 생성 및 정산
+            const deposit = await this.deposit(queryRunner, exAccount, depositAmount)
             await queryRunner.commitTransaction();
         } catch (error) {
             console.error(error);
