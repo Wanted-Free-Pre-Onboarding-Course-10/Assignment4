@@ -93,6 +93,8 @@
 
 
 3. 이후, API 테스트를 시도해 주세요.
+<img width="722" alt="스크린샷 2021-11-13 오전 6 04 10" src="https://user-images.githubusercontent.com/81801012/141534382-ed8f5caf-166b-45b6-bdff-8e06b905995b.png">
+
 
 ## 설치 및 실행 방법
 
