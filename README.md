@@ -135,7 +135,7 @@ npm run start:dev
 
 [입출금 API (트랜잭션)](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EB%8F%88%EC%9D%98-%EB%AC%B4%EA%B2%B0%EC%84%B1%EC%9D%84-%EC%A7%80%ED%82%A4%EB%8A%94-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EB%B0%A9%EB%B2%95(%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98)) 
 
-[입출금 API(동시성)](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EB%8F%88%EC%9D%98-%EB%AC%B4%EA%B2%B0%EC%84%B1%EC%9D%84-%EC%A7%80%ED%82%A4%EB%8A%94-%EB%91%90%EB%B2%88%EC%A7%B8-%EB%B0%A9%EB%B2%95(%EB%8F%99%EC%8B%9C%EC%84%B1))) 
+[입출금 API(동시성)](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EB%8F%88%EC%9D%98-%EB%AC%B4%EA%B2%B0%EC%84%B1%EC%9D%84-%EC%A7%80%ED%82%A4%EB%8A%94-%EB%91%90%EB%B2%88%EC%A7%B8-%EB%B0%A9%EB%B2%95(%EB%8F%99%EC%8B%9C%EC%84%B1))
 
 
 ## 테스트 
