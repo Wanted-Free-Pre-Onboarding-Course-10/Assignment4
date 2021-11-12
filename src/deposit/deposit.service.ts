@@ -43,11 +43,3 @@ export class DepositService extends RemittanceService {
         }
     }
 }
-흰색_확인_표시
-두_눈
-두_손을_들고_있는_사람
-
-
-
-
-
