@@ -4,14 +4,14 @@ export const DEPOSIT_SUCCESS_MSG = (
   amount: number,
   balance: number,
 ) =>
-  `${accountNumber}계좌로 ${amount}원 입금 성공하여 잔액은 ${balance}입니다.`;
+  `${accountNumber} 계좌로 ${amount}원 입금 성공하여 잔액은 ${balance}입니다.`;
 
 export const WITHDRAW_SUCCESS_MSG = (
   accountNumber: string,
   amount: number,
   balance: number,
 ) =>
-  `${accountNumber}계좌로부터 ${amount}원 출금 성공하여 잔액은 ${balance}입니다.`;
+  `${accountNumber} 계좌로부터 ${amount}원 출금 성공하여 잔액은 ${balance}입니다.`;
 
 export const REMITTANCE_SUCCESS_MSG = (
   fromAccountNumber: string,
@@ -19,7 +19,7 @@ export const REMITTANCE_SUCCESS_MSG = (
   amount: number,
   balance: number,
 ) =>
-  `${fromAccountNumber}계좌에서 ${toAccountNumber}계좌로 ${amount}원 송금 성공하여 ${fromAccountNumber}잔액은 ${balance}입니다.`;
+  `${fromAccountNumber} 계좌에서 ${toAccountNumber} 계좌로 ${amount}원 송금 성공하여 ${fromAccountNumber} 잔액은 ${balance}입니다.`;
 
 export const LOGIN_SUCCESS_MSG = '로그인 성공입니다.';
 export const SIGNUP_SUCCES_MSG = '회원가입 성공입니다.';

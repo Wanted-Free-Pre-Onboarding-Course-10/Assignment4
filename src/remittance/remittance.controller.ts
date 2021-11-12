@@ -8,7 +8,7 @@ export class RemittanceController {
 
     @Post('/')
     withdraw(@Body() updateWithRemitDto: UpdateWithRemitDto) {
-        return this.remittanceService.remit(updateWithRemitDto, 2);
+        return this.remittanceService.remit(updateWithRemitDto, 1);
     }
 
 }
