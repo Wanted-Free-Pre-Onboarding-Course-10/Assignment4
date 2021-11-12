@@ -9,6 +9,8 @@ import { Account } from '../account/account.entity';
 import { User } from '../user/user.entity';
 import { Balance } from '../balance/balance.entity';
 import { Withdraw } from '../withdraw/withdraw.entity';
+import { UserModule } from '../user/user.module';
+
 @Module({
   imports: [
     TypeOrmModule.forFeature([
@@ -19,6 +21,7 @@ import { Withdraw } from '../withdraw/withdraw.entity';
       User,
       Withdraw
     ]),
+    UserModule
   ],
   controllers: [DepositController],
   providers: [DepositService, DepositQueryService],
