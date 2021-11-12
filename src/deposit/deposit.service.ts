@@ -34,26 +34,21 @@ export class DepositService {
         const { depositAmount, accountNumber } = updateDepositInfo;
         console.log(depositAmount, accountNumber);
         // 해당 계좌 정보 조회
-        console.log("계좌번호로 해당 계좌 정보 조회-");
         const account = await this.findByAccountNumber(accountNumber);
-        console.log(account);
         if (account === undefined) {
             throw new Error("The account doesn't exist.");
         }
 
         // // 권한 조회
         const auth = await this.authCheck(account.id, user);
-        console.log(auth)
         if (auth === undefined) {
             throw new Error("You don't have edit permission");
         }
-        console.log(auth);
         const queryRunner = this.connection.createQueryRunner();
         await queryRunner.connect();
         await queryRunner.startTransaction();
         try {
             // 잔액 조회
-            console.log(account.id);
             const exAccount = await queryRunner.manager
                 .getRepository(Account)
                 .findOne({
@@ -61,8 +56,6 @@ export class DepositService {
                     relations: ['balance']
                 }
                 );
-
-
             // 입금 내역 생성
             const oldBalance: number = exAccount.balance.balance;
             const newBalance: number = exAccount.balance.balance + depositAmount
@@ -76,7 +69,6 @@ export class DepositService {
             const updateBalance = await queryRunner.manager
                 .getRepository(Balance)
                 .save(exAccount.balance);
-            console.log(exAccount);
             await queryRunner.commitTransaction();
         } catch (error) {
             console.error(error);
