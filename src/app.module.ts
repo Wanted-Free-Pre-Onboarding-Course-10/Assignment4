@@ -14,6 +14,7 @@ import { Account } from './account/account.entity';
 import { Balance } from './balance/balance.entity';
 import { Deposit } from './deposit/deposit.entity';
 import { Withdraw } from './withdraw/withdraw.entity';
+import { WithdrawQueryRepository } from './withdraw/withdraw.query.repository';
 
 @Module({
   imports: [
@@ -26,7 +27,14 @@ import { Withdraw } from './withdraw/withdraw.entity';
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gpl',
     }),
-    TypeOrmModule.forFeature([User, Account, Balance, Deposit, Withdraw]),
+    TypeOrmModule.forFeature([
+      User,
+      Account,
+      Balance,
+      Deposit,
+      Withdraw,
+      WithdrawQueryRepository,
+    ]),
   ],
   controllers: [AppController],
   providers: [AppService],
