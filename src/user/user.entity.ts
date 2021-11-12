@@ -1,9 +1,10 @@
-import { BeforeInsert, Column, Entity, OneToMany } from 'typeorm';
+import { BeforeInsert, Column, Entity, OneToMany, Unique } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { IsNotEmpty, IsString, Length } from 'class-validator';
 import { Base } from '../base.entity/base.entity';
 import { Account } from 'src/account/account.entity';
 @Entity()
+@Unique(['username'])
 export class User extends Base {
   @IsNotEmpty()
   @IsString()
