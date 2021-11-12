@@ -1,11 +1,11 @@
-import { BeforeInsert, Column, Entity, OneToMany, Unique } from 'typeorm';
+import { BeforeInsert, Column, Entity, OneToMany } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { Base } from '../base.entity/base.entity';
 import { Account } from 'src/account/account.entity';
+
 @Entity()
-@Unique(['username'])
 export class User extends Base {
-  @Column({ unique: true, nullable: false, name: 'username' })
+  @Column({ nullable: false, name: 'username', unique: true })
   username: string;
 
   @Column({ nullable: false, name: 'password' })
