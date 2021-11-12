@@ -33,4 +33,4 @@ import { RemittanceModule } from './remittance/remittance.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

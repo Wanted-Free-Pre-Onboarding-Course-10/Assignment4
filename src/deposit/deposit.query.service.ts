@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DepositQueryRepository } from './deposit.query.repository';
+import { TransactionHistoryPaginationRequest } from '../account/dto/transaction.history.pagination.request';
 
 @Injectable()
 export class DepositQueryService {
@@ -9,7 +10,13 @@ export class DepositQueryService {
     private depositQueryRepository: DepositQueryRepository,
   ) {}
 
-  getTransactionHistory() {
-    return this.depositQueryRepository.getTransactionHistory();
+  getTransactionHistory(
+    transactionHistoryPaginationRequest: TransactionHistoryPaginationRequest,
+    accountId: number,
+  ) {
+    return this.depositQueryRepository.getTransactionHistory(
+      transactionHistoryPaginationRequest,
+      accountId,
+    );
   }
 }
