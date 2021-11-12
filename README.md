@@ -61,6 +61,9 @@
 ||송금 받는 계좌의 입금 거래내역 생성|  | 
 ||송금 계좌의 잔액 변경|  | 
 ||송금 받는 계좌의 잔액 변경|  | 
+|무결성| |  | 
+||트랜잭션 사용|  | 
+||송금 받는 계좌의 잔액 변경|  |
 ## 사용 스택
 
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white" />&nbsp;
