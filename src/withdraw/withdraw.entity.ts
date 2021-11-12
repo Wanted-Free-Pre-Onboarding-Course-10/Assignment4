@@ -14,16 +14,26 @@ import { Deposit } from 'src/deposit/deposit.entity';
 
 @Entity()
 export class Withdraw extends Base {
-  accountId: Number;
+  @Column({ type: 'unsigned big int', nullable: false, name: 'new_balance' })
+  newBalance: number;
 
-  depositId: Number;
+  @Column({ type: 'unsigned big int', nullable: false, name: 'old_balance' })
+  oldBalance: number;
 
-  balance: Number;
+  @Column({ type: 'unsigned big int', nullable: false, name: 'amount' })
+  amount: number;
 
-  @ManyToOne(() => Account, (account) => account.id, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Account, (account) => account.withdraws, {
+    nullable: false,
+  })
+  @JoinColumn({
+    name: 'account_id',
+  })
   account: Account;
 
-  @OneToOne(() => Deposit)
-  @JoinColumn()
+  @OneToOne(() => Deposit, { nullable: true })
+  @JoinColumn({
+    name: 'deposit_id',
+  })
   deposit: Deposit;
 }

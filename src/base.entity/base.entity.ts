@@ -2,15 +2,19 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  Column,
+  BaseEntity,
+  Entity,
 } from 'typeorm';
 
+@Entity()
 export abstract class Base {
   @PrimaryGeneratedColumn('increment')
   public id: number;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   created_at: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
 }
