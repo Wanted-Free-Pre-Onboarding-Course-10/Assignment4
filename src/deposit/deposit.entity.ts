@@ -6,27 +6,32 @@ import {
     UpdateDateColumn,
     ManyToOne,
     OneToOne,
-    JoinColumn
+    JoinColumn,
+    Column,
 } from 'typeorm';
 import { Base } from '../base.entity/base.entity';
 @Entity()
 export class Deposit extends Base {
+    @Column({ type: 'unsigned big int', nullable: false, name: 'new_balance' })
+    newBalance: number;
 
-    accountId: string;
+    @Column({ type: 'unsigned big int', nullable: false, name: 'old_balance' })
+    oldBalance: number;
 
-    withdrawId: string;
+    @Column({ type: 'unsigned big int', nullable: false, name: 'amount' })
+    amount: number;
 
-    oldBalance: Number;
-
-    newBalance: Number;
-
-    amount: Number;
-
-    @ManyToOne(() => Account, account => account.id, { onDelete: 'CASCADE' })
+    @ManyToOne(() => Account, (account) => account.deposits, {
+        nullable: false,
+    })
+    @JoinColumn({
+        name: 'account_id',
+    })
     account: Account;
 
-    @OneToOne(() => Withdraw)
-    @JoinColumn()
+    @OneToOne(() => Withdraw, { nullable: true })
+    @JoinColumn({
+        name: 'withdraw_id',
+    })
     withdraw: Withdraw;
-
 }
