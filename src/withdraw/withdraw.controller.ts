@@ -10,7 +10,7 @@ export class WithdrawController {
 
     @Post('/')
     withdraw(@Body() updateWithDrawDto: UpdateWithDrawDto) {
-        return this.withDrawSeivce.withdraw(updateWithDrawDto, 1);
+        return this.withDrawSeivce.withdrawMe(updateWithDrawDto, 1);
     }
 }
 

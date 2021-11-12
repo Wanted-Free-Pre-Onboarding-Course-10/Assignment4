@@ -18,6 +18,7 @@ export class RemittanceService {
     private connection: Connection,
   ) {}
 
+
   // 계좌번호로 계좌 정보 조회
   async findByAccountNumber(accountNumber: string): Promise<any> {
     const account = await this.accountRepository.findOne({
