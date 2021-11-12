@@ -34,7 +34,6 @@ export class WithdrawService {
 
     async withdraw(updateWithdrawInfo: UpdateWithDrawDto, user: number): Promise<any> {
         const { withdrawAmount, accountNumber } = updateWithdrawInfo;
-        console.log(withdrawAmount, accountNumber);
         // 해당 계좌 정보 조회
         const account = await this.findByAccountNumber(accountNumber);
         if (account === undefined) {
@@ -43,17 +42,14 @@ export class WithdrawService {
 
         // // 권한 조회
         const auth = await this.authCheck(account.id, user);
-        console.log(auth)
         if (auth === undefined) {
             throw new Error("You don't have edit permission");
         }
-        console.log(auth);
         const queryRunner = this.connection.createQueryRunner();
         await queryRunner.connect();
         await queryRunner.startTransaction();
         try {
             // 잔액 조회
-            console.log(account.id);
             const exAccount = await queryRunner.manager
                 .getRepository(Account)
                 .findOne({
