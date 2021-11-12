@@ -58,7 +58,6 @@ export class WithdrawService {
                 });
             console.log(exAccount.balance.balance, withdrawAmount);
             const amountAfterTransaction = exAccount.balance.balance - withdrawAmount;
-            console.log(amountAfterTransaction);
             // 현재 잔액 - 출금액
             if (amountAfterTransaction < 0)
                 throw Error("잔액이 부족합니다");
@@ -74,7 +73,6 @@ export class WithdrawService {
             const updateBalance = await queryRunner.manager
                 .getRepository(Balance)
                 .save(exAccount.balance);
-            console.log(exAccount);
             await queryRunner.commitTransaction();
         } catch (error) {
             console.error(error);
