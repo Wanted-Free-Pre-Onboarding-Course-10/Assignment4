@@ -19,10 +19,14 @@
 
 ## 사용 스택
 
-
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white" />&nbsp;
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white" />&nbsp;
+<img src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=NestJS&logoColor=white" />&nbsp;
+<img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=SQLite&logoColor=white" />&nbsp;
 ## DB 스키마
 
 
+![Copy of 8퍼센트](https://user-images.githubusercontent.com/81801012/141456569-5456cc6a-0318-4b71-8530-a3bf8f35455f.png)
 
 ## 문제정의 및 시퀀스 다이어그램
 
