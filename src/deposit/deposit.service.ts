@@ -16,13 +16,13 @@ export class DepositService {
         private connection: Connection,
     ) { }
 
-    async findByAccountNumber(accountNumber: String): Promise<any> {
+    async findByAccountNumber(accountNumber: string): Promise<any> {
         return await this.accountRepository.findOne({
             where: { accountNumber: accountNumber }
         })
     }
 
-    async authCheck(accountId: Number, userId: Number): Promise<any> {
+    async authCheck(accountId: number, userId: number): Promise<any> {
         return await this.accountRepository
             .findOne({
                 where: { id: accountId, user: { id: userId } },
@@ -30,8 +30,8 @@ export class DepositService {
             });
     }
 
-    async deposit(updateQuestionInfo, user) {
-        const { depositAmount, accountNumber } = updateQuestionInfo;
+    async deposit(updateDepositInfo, user) {
+        const { depositAmount, accountNumber } = updateDepositInfo;
         console.log(depositAmount, accountNumber);
         // 해당 계좌 정보 조회
         console.log("계좌번호로 해당 계좌 정보 조회-");

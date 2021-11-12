@@ -3,10 +3,4 @@ import { DepositService } from 'src/deposit/deposit.service';
 
 @Controller('user')
 export class UserController {
-    constructor(private depositService: DepositService) { }
-
-    @Post('/')
-    withdraw() {
-
-    }
 }
