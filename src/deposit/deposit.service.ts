@@ -18,7 +18,7 @@ export class DepositService {
 
     async findByAccountNumber(accountNumber: String): Promise<any> {
         return await this.accountRepository.findOne({
-            where: { accountNumber }
+            where: { accountNumber: accountNumber }
         })
     }
 
@@ -32,34 +32,51 @@ export class DepositService {
 
     async deposit(updateQuestionInfo, user) {
         const { depositAmount, accountNumber } = updateQuestionInfo;
-
+        console.log(depositAmount, accountNumber);
         // 해당 계좌 정보 조회
+        console.log("계좌번호로 해당 계좌 정보 조회-");
         const account = await this.findByAccountNumber(accountNumber);
+        console.log(account);
         if (account === undefined) {
             throw new Error("The account doesn't exist.");
         }
-        // 권한 조회
+
+        // // 권한 조회
         const auth = await this.authCheck(account.id, user);
+        console.log(auth)
         if (auth === undefined) {
             throw new Error("You don't have edit permission");
         }
+        console.log(auth);
         const queryRunner = this.connection.createQueryRunner();
         await queryRunner.connect();
         await queryRunner.startTransaction();
         try {
             // 잔액 조회
-            const nowBalance = await queryRunner.manager
-                .getRepository(Balance)
+            console.log(account.id);
+            const exAccount = await queryRunner.manager
+                .getRepository(Account)
                 .findOne({
-                    where: { account },
-                    relations: ['account']
+                    where: { id: account.id },
+                    relations: ['balance']
                 }
                 );
+
+
             // 입금 내역 생성
-            const newBalance = nowBalance.balance + depositAmount
+            const oldBalance: number = exAccount.balance.balance;
+            const newBalance: number = exAccount.balance.balance + depositAmount
+            const depositInfo = { account: account, oldBalance: oldBalance, newBalance: newBalance, amount: depositAmount }
             const deposit = await queryRunner.manager
                 .getRepository(Deposit)
-                .save({ accountId: account.id, oldBalance: nowBalance.balance, newBalance: newBalance, amount: depositAmount })
+                .save(depositInfo);
+
+            // 잔액 수정
+            exAccount.balance.balance = newBalance;
+            const updateBalance = await queryRunner.manager
+                .getRepository(Balance)
+                .save(exAccount.balance);
+            console.log(exAccount);
             await queryRunner.commitTransaction();
         } catch (error) {
             console.error(error);

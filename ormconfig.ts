@@ -6,6 +6,6 @@ export = {
   database: 'database.sqlite',
   // database: ':memory:',
   entities: [__dirname + '/../**/*.entity.{js, ts}'],
-  synchronize: true,
+  synchronize: false,
   logging: false,
 };
