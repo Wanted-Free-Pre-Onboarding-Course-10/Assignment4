@@ -52,7 +52,7 @@ export class AppService {
         //account1 create - 여러개일수도 있음
         const createdAccount = this.accountRepository.create({
           bankname: `은행${i} - a`,
-          accountNumber: `계좌번호${i}`,
+          accountNumber: `계좌번호${i}a`,
           user: createdUser,
           balance: createdBalance,
         });
@@ -71,7 +71,7 @@ export class AppService {
         //account1 create - 여러개일수도 있음
         const createdAccount1 = this.accountRepository.create({
           bankname: `은행${i} - b`,
-          accountNumber: `계좌번호${i}`,
+          accountNumber: `계좌번호${i}b`,
           user: createdUser,
           balance: createdBalance1,
         });
@@ -90,7 +90,7 @@ export class AppService {
         //account1 create - 여러개일수도 있음
         const createdAccount2 = this.accountRepository.create({
           bankname: `은행${i} - c`,
-          accountNumber: `계좌번호${i}`,
+          accountNumber: `계좌번호${i}c`,
           user: createdUser,
           balance: createdBalance2,
         });
