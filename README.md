@@ -87,7 +87,7 @@
 
 ## API 테스트
 1. 우측 링크를 클릭해서 postman으로 들어갑니다.[링크](https://www.postman.com/martian-satellite-348039/workspace/10-8-api-test/overview) 
-2. 정의된 server가 올바른지 확인 합니다.()
+2. 정의된 server가 올바른지 확인 합니다.(13.124.176.234:5000)
 
 
 
