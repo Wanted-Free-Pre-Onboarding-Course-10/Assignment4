@@ -4,7 +4,7 @@ import { UpdateWithDrawDto } from './dto/update.dto';
 import { WithdrawService } from './withdraw.service';
 
 @Controller('withdraw')
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 export class WithdrawController {
     constructor(private withDrawSeivce: WithdrawService) { }
 

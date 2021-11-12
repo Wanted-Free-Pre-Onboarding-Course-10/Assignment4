@@ -3,7 +3,7 @@ import { UpdateDepositDto } from './dto/update.dto'
 import { DepositService } from './deposit.service';
 import { AuthGuard } from '@nestjs/passport';
 @Controller('deposit')
-@UseGuards(AuthGuard())
+// @UseGuards(AuthGuard())
 export class DepositController {
     constructor(private depositService: DepositService) { }
 

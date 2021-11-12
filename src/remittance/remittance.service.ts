@@ -6,8 +6,10 @@ import { Account } from '../account/account.entity';
 import { Withdraw } from 'src/withdraw/withdraw.entity';
 import { Connection, QueryRunner, Repository } from 'typeorm';
 import { UpdateWithRemitDto } from './dto/update.dto';
-
-
+import { REMITTANCE_SUCCESS_MSG } from "../message/message";
+import { NotEnoughBalanceException } from "../exception/not_enough_balance_exception";
+import { NotAuthorizedAccountException } from "../exception/auth_account_exception";
+import { AccountNotFoundException } from "../exception/not_found_account_exception";
 @Injectable()
 export class RemittanceService {
     // 생성자
@@ -26,7 +28,7 @@ export class RemittanceService {
                 where: { accountNumber: accountNumber }
             })
         if (account === undefined) {
-            throw new Error("The account doesn't exist.");
+            throw new AccountNotFoundException(accountNumber);
         }
         return account;
     }
@@ -39,7 +41,7 @@ export class RemittanceService {
                 relations: ['user']
             });
         if (auth === undefined) {
-            throw new Error("You don't have edit permission");
+            throw new NotAuthorizedAccountException;
         }
         return auth;
     }
@@ -60,7 +62,7 @@ export class RemittanceService {
         const amountAfterTransaction = exAccount.balance.balance - withdrawAmount;
         // 현재 잔액 - 출금액
         if (amountAfterTransaction < 0)
-            throw Error("잔액이 부족합니다");
+            throw new NotEnoughBalanceException;
         return amountAfterTransaction;
     }
 
@@ -84,14 +86,14 @@ export class RemittanceService {
         const oldBalance: number = exAccount.balance.balance;
         const newBalance: number = exAccount.balance.balance + withdrawAmount
         const depositInfo = { account: exAccount, oldBalance: oldBalance, newBalance: newBalance, amount: withdrawAmount }
-        const deposit = await queryRunner.manager
+        const depositData: Deposit = await queryRunner.manager
             .getRepository(Deposit)
             .save(depositInfo);
         exAccount.balance.balance = newBalance;
         const updateBalance = await queryRunner.manager
             .getRepository(Balance)
             .save(exAccount.balance);
-        return deposit;
+        return depositData;
     }
 
     // 출입금 내역 연결
@@ -126,9 +128,9 @@ export class RemittanceService {
             const withdraw = await this.withdraw(queryRunner, exFromAccount, withdrawAmount, amountAfterTransaction);
             // 입금 내역 생성 및 정산
             const deposit = await this.deposit(queryRunner, exToAccount, withdrawAmount);
-            console.log(withdraw, deposit);
             this.interlink(queryRunner, withdraw, deposit);
             await queryRunner.commitTransaction();
+            return REMITTANCE_SUCCESS_MSG(fromAccountNumber, toAccountNumber, withdrawAmount, amountAfterTransaction);
         } catch (error) {
             console.error(error);
             await queryRunner.rollbackTransaction();

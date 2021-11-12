@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException, } from '@nestjs/common';
 import { Connection, Repository } from "typeorm";
+import { DEPOSIT_SUCCESS_MSG } from "../message/message"
 import { InjectRepository } from '@nestjs/typeorm';
 import { Balance } from "../balance/balance.entity";
 import { Deposit } from "../deposit/deposit.entity";
@@ -32,8 +33,9 @@ export class DepositService extends RemittanceService {
             // 잔액 조회
             const exAccount = await this.balanceCheck(queryRunner, account, depositAmount)
             // 입금 내역 생성 및 정산
-            const deposit = await this.deposit(queryRunner, exAccount, depositAmount)
+            const depositData: Deposit = await this.deposit(queryRunner, exAccount, depositAmount)
             await queryRunner.commitTransaction();
+            return DEPOSIT_SUCCESS_MSG(accountNumber, depositAmount, depositData.newBalance);
         } catch (error) {
             console.error(error);
             await queryRunner.rollbackTransaction();

@@ -7,6 +7,7 @@ import { Deposit } from '../deposit/deposit.entity';
 import { Account } from '../account/account.entity';
 import { Withdraw } from './withdraw.entity';
 import { RemittanceService } from '../remittance/remittance.service'
+import { WITHDRAW_SUCCESS_MSG } from "../message/message"
 @Injectable()
 export class WithdrawService extends RemittanceService {
 
@@ -33,8 +34,9 @@ export class WithdrawService extends RemittanceService {
       // 해당 출금 계좌 거래 가능 조회
       const amountAfterTransaction = await this.confirmTradable(exAccount, withdrawAmount);
       // 출금 내역 생성 및 정산
-      const deposit = await this.deposit(queryRunner, exAccount, withdrawAmount);
+      const withdrawData = await this.withdraw(queryRunner, exAccount, withdrawAmount, amountAfterTransaction);
       await queryRunner.commitTransaction();
+      return WITHDRAW_SUCCESS_MSG(accountNumber, withdrawAmount, withdrawData.newBalance);
     } catch (error) {
       console.error(error);
       await queryRunner.rollbackTransaction();
