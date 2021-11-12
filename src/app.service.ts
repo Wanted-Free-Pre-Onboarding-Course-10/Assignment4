@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
-import { Repository, Transaction } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Account } from './account/account.entity';
 import { Balance } from './balance/balance.entity';
 import { Deposit } from './deposit/deposit.entity';
