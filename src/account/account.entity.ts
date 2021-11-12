@@ -23,10 +23,10 @@ export class Account extends Base {
   @OneToMany(() => Deposit, (deposit) => deposit.account)
   deposits: Deposit[];
 
-  @OneToMany(() => Withdraw, (withdraw) => withdraw.account)
+  @OneToMany(() => Withdraw, (withdraw) => withdraw.account, { eager: false })
   withdraws: Withdraw[];
 
-  @ManyToOne(() => User, (user) => user.accounts, { nullable: false })
+  @ManyToOne(() => User, (user) => user.accounts, { eager: false })
   @JoinColumn({
     name: 'user_id',
   })
