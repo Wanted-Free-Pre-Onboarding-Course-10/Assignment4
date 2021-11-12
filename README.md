@@ -15,7 +15,14 @@
 
 ## 요구사항 분석
 **REST API 기능**
-
+- 거래내역 조회 API
+  - 거래내역 시간별로 필터링
+  - 거래내역 페이지네이션
+- 입금 API
+  - 계좌의 소유주만 요청
+- 출금 API
+  - 계좌의 소유주만 요청
+  - 계좌의 잔액 내에서만 출금 가능
 
 ## 사용 스택
 
@@ -61,11 +68,17 @@
 ## 설치 및 실행 방법
 
 ### 프로젝트 설치
+```
+git clone https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4.git
+```
 
 
+ ### 환경 구축 및 
+```
+npm install
 
- ### 환경 구축
-
+npm run start:dev
+```
 
 
 ## 팀원
