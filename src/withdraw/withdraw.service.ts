@@ -39,7 +39,6 @@ export class WithdrawService {
         if (account === undefined) {
             throw new Error("The account doesn't exist.");
         }
-
         // // 권한 조회
         const auth = await this.authCheck(account.id, user);
         if (auth === undefined) {
@@ -56,7 +55,6 @@ export class WithdrawService {
                     where: { id: account.id },
                     relations: ['balance']
                 });
-            console.log(exAccount.balance.balance, withdrawAmount);
             const amountAfterTransaction = exAccount.balance.balance - withdrawAmount;
             // 현재 잔액 - 출금액
             if (amountAfterTransaction < 0)
