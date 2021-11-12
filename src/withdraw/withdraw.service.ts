@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Balance } from "../balance/balance.entity";
 import { Deposit } from "../deposit/deposit.entity";
 import { Account } from "../account/account.entity";
+import { Withdraw } from './withdraw.entity';
 
 @Injectable()
 export class WithdrawService {
@@ -61,15 +62,20 @@ export class WithdrawService {
                     where: { id: account.id },
                     relations: ['balance']
                 });
-            // 입금 내역 생성
+            console.log(exAccount.balance.balance, withdrawAmount);
+            const amountAfterTransaction = exAccount.balance.balance - withdrawAmount;
+            console.log(amountAfterTransaction);
+            // 현재 잔액 - 출금액
+            if (amountAfterTransaction < 0)
+                throw Error("잔액이 부족합니다");
+            // 출금 내역 생성
             const oldBalance: number = exAccount.balance.balance;
-            const newBalance: number = exAccount.balance.balance + depositAmount
-            const depositInfo = { account: account, oldBalance: oldBalance, newBalance: newBalance, amount: depositAmount }
+            const newBalance: number = amountAfterTransaction;
+            const withdrawInfo = { account: account, oldBalance: oldBalance, newBalance: newBalance, amount: withdrawAmount }
             const deposit = await queryRunner.manager
-                .getRepository(Deposit)
-                .save(depositInfo);
-
-            // 잔액 수정
+                .getRepository(Withdraw)
+                .save(withdrawInfo);
+            //잔액 수정
             exAccount.balance.balance = newBalance;
             const updateBalance = await queryRunner.manager
                 .getRepository(Balance)

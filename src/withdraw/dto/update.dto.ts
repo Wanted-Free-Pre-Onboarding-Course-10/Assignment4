@@ -1,7 +1,7 @@
 
 export class UpdateWithDrawDto {
 
-    withdrawAmount: Number;
+    withdrawAmount: number;
 
-    accountNumber: String;
+    accountNumber: string;
 }
