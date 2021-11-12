@@ -17,7 +17,7 @@ export class Account extends Base {
   @Column({ nullable: false, name: 'bankname' })
   bankname: string;
 
-  @Column({ nullable: false, name: 'account_number' })
+  @Column({ nullable: false, name: 'account_number', unique: true })
   accountNumber: string;
 
   @OneToMany(() => Deposit, (deposit) => deposit.account)

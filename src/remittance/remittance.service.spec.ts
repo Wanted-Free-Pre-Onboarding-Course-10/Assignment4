@@ -1,9 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { DepositService } from './deposit.service';
+import { RemittanceService } from './remittance.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Deposit } from './deposit.entity';
+import { Deposit } from '../deposit/deposit.entity';
 import { Balance } from '../balance/balance.entity';
 import { Account } from '../account/account.entity';
+import { Withdraw } from '../withdraw/withdraw.entity';
 import { Connection } from 'typeorm';
 
 const mockRepository = {
@@ -15,13 +16,13 @@ const mockConnection = {
   transaction: jest.fn(),
 };
 
-describe('DepositService', () => {
-  let service: DepositService;
+describe('RemittanceService', () => {
+  let service: RemittanceService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        DepositService,
+        RemittanceService,
         {
           provide: getRepositoryToken(Deposit),
           useValue: mockRepository,
@@ -35,13 +36,17 @@ describe('DepositService', () => {
           useValue: mockRepository,
         },
         {
+          provide: getRepositoryToken(Withdraw),
+          useValue: mockRepository,
+        },
+        {
           provide: Connection,
           useValue: mockConnection,
         },
       ],
     }).compile();
 
-    service = module.get<DepositService>(DepositService);
+    service = module.get<RemittanceService>(RemittanceService);
   });
 
   it('should be defined', () => {

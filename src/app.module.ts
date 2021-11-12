@@ -14,6 +14,7 @@ import { Account } from './account/account.entity';
 import { Balance } from './balance/balance.entity';
 import { Deposit } from './deposit/deposit.entity';
 import { Withdraw } from './withdraw/withdraw.entity';
+import { RemittanceModule } from './remittance/remittance.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { Withdraw } from './withdraw/withdraw.entity';
       autoSchemaFile: 'schema.gpl',
     }),
     TypeOrmModule.forFeature([User, Account, Balance, Deposit, Withdraw]),
+    RemittanceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

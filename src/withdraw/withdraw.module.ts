@@ -6,8 +6,12 @@ import { Balance } from "../balance/balance.entity";
 import { Deposit } from "../deposit/deposit.entity";
 import { Account } from "../account/account.entity";
 import { User } from "../user/user.entity";
+import { Withdraw } from '../withdraw/withdraw.entity';
+import { UserModule } from 'src/user/user.module';
+
 @Module({
-  imports: [TypeOrmModule.forFeature([Balance, Deposit, Account, User])],
+  imports: [TypeOrmModule.forFeature([Balance, User, Deposit, Account, Withdraw, User]),
+    UserModule],
   providers: [WithdrawService],
   controllers: [WithdrawController],
 })
