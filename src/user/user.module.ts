@@ -19,4 +19,4 @@ import { UserService } from './user.service';
   providers: [UserService, JwtStrategy],
   exports:[JwtStrategy, PassportModule]
 })
-export class UserModule {}
+export class UserModule { }
