@@ -1,5 +1,6 @@
 import { Account } from 'src/account/account.entity';
 import { Withdraw } from 'src/withdraw/withdraw.entity';
+
 import {
     CreateDateColumn,
     Entity,
@@ -9,7 +10,9 @@ import {
     JoinColumn,
     Column,
 } from 'typeorm';
+
 import { Base } from '../base.entity/base.entity';
+
 @Entity()
 export class Deposit extends Base {
     @Column({ type: 'unsigned big int', nullable: false, name: 'new_balance' })
