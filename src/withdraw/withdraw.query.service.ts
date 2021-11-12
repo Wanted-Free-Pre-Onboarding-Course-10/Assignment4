@@ -8,7 +8,7 @@ export class WithdrawQueryService {
   constructor(
     @InjectRepository(WithdrawQueryRepository)
     private withdrawQueryRepository: WithdrawQueryRepository,
-  ) {}
+  ) { }
 
   getTransactionHistory(
     transactionHistoryPaginationRequest: TransactionHistoryPaginationRequest,
