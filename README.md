@@ -7,6 +7,9 @@
 
 [과제 소개](https://www.notion.so/wecode/8-75d7f2d760ce4382a4fb6366bdb4f139)
 
+## 개발 일정
+![](https://images.velog.io/images/earthkingman/post/b171bd69-20e1-4d8b-9164-4edb68de6d30/image.png)
+
 ## 코드 컨벤션
 [코드 컨벤션](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EC%BD%94%EB%93%9C%EC%BB%A8%EB%B2%A4%EC%85%98)
 
