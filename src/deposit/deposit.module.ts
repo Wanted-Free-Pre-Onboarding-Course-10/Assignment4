@@ -9,6 +9,7 @@ import { Account } from '../account/account.entity';
 import { User } from '../user/user.entity';
 
 import { Balance } from '../balance/balance.entity';
+import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { Balance } from '../balance/balance.entity';
       Account,
       User,
     ]),
+    UserModule
   ],
   controllers: [DepositController],
   providers: [DepositService, DepositQueryService],
