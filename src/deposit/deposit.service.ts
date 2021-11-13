@@ -20,7 +20,7 @@ export class DepositService extends RemittanceService {
     // 자기 계좌 입금
     async depositMe(updateDepositInfo, user) {
         const { depositAmount, accountNumber } = updateDepositInfo;
-        if (depositAmount < 0)
+        if (depositAmount <= 0)
             return INVALID_REQUEST;
         console.log(depositAmount, accountNumber);
         // 해당 계좌 정보 조회
