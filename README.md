@@ -86,18 +86,21 @@
 [API문서](https://documenter.getpostman.com/view/13568025/UVC8Ckf6)
 
 ## API 테스트
-1. 우측 링크를 클릭해서 postman으로 들어갑니다.[링크](https://www.postman.com/martian-satellite-348039/workspace/10-8-api-test/overview) 
-2. 정의된 server가 올바른지 확인 합니다.(13.124.176.234:5000)
+1. 우측 링크를 클릭해서 postman으로 들어갑니다.[링크](https://documenter.getpostman.com/view/13568025/UVC8Ckf6) 
+2. Run in Postman 클릭해주세요 
+![](https://images.velog.io/images/earthkingman/post/c717ed2f-2224-492c-8fbd-7421cdc176f3/image.png)
+3. 웹 버전은 API 요청이 불가능합니다. 응용프로그램을 실행시켜주세요
+![image](https://user-images.githubusercontent.com/48669085/141656904-535ae3b9-f87b-4cd9-95eb-47b1895c778b.png)
+
+4. 정의된 server가 올바른지 확인 합니다.(13.124.176.234:5000)
 <img width="722" alt="스크린샷 2021-11-13 오전 6 04 10" src="https://user-images.githubusercontent.com/81801012/141534382-ed8f5caf-166b-45b6-bdff-8e06b905995b.png">
 
-
-
-3. 로그인 시, 다음과 같이 accessToken을 발급 받습니다. 발급 받은 accessToken을 복사합니다.
+5. 로그인 시, 다음과 같이 accessToken을 발급 받습니다. 발급 받은 accessToken을 복사합니다.
 <img width="1012" alt="스크린샷 2021-11-13 오후 8 53 51" src="https://user-images.githubusercontent.com/81801012/141642811-23508a58-bedd-4607-9738-4e6ec64535e8.png">
-4. 입금, 송금, 출금, 거래내역 조회 API테스트를 하기 전, 1)Authrization 탭에서 2)Bearer Token을 선택하고 3)복사한 accessToken을 넣어줍니다.
+6. 입금, 송금, 출금, 거래내역 조회 API테스트를 하기 전, 1)Authrization 탭에서 2)Bearer Token을 선택하고 3)복사한 accessToken을 넣어줍니다.
  <img width="1009" alt="스크린샷 2021-11-13 오후 8 56 19" src="https://user-images.githubusercontent.com/81801012/141642981-590b13cf-004e-41f3-8fce-279f39e097c9.png">
 
-5. 입금, 송금, 출금, 거래내역 조회 API테스트를 실시합니다.
+7. 입금, 송금, 출금, 거래내역 조회 API테스트를 실시합니다.
 
 
 ## 설치 및 실행 방법
