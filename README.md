@@ -121,9 +121,6 @@ npm run start:dev
 | 김태희 | [김태희](https://github.com/godtaehee)            |      |        [회고록]()            |
 | 박상엽 | [큰형](  https://github.com/lotus0204)            | 회원가입,로그인 기능,API 보안      |     [회고록]()                   |
 
-## 개발 일정
-
-![]()
 
 ## 개발도중 고민들
 - [DB설계시 고민](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/DB-%EC%84%A4%EA%B3%84)
@@ -140,7 +137,4 @@ npm run start:dev
 
 [입출금 API (트랜잭션)](https://github.com/Wanted-Free-Pre-Onboarding-Course-10/Assignment4/wiki/%EB%8F%88%EC%9D%98-%EB%AC%B4%EA%B2%B0%EC%84%B1%EC%9D%84-%EC%A7%80%ED%82%A4%EB%8A%94-%EC%B2%AB%EB%B2%88%EC%A7%B8-%EB%B0%A9%EB%B2%95(%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98)) 
 
-
-
-## 테스트 
 
