@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException, } from '@nestjs/common';
 import { Connection, Repository } from "typeorm";
 import { DEPOSIT_SUCCESS_MSG } from "../message/message"
+import { INVALID_REQUEST } from "../message/message"
 import { InjectRepository } from '@nestjs/typeorm';
 import { Balance } from "../balance/balance.entity";
 import { Deposit } from "../deposit/deposit.entity";
@@ -19,6 +20,8 @@ export class DepositService extends RemittanceService {
     // 자기 계좌 입금
     async depositMe(updateDepositInfo, user) {
         const { depositAmount, accountNumber } = updateDepositInfo;
+        if (depositAmount <= 0)
+            return INVALID_REQUEST;
         console.log(depositAmount, accountNumber);
         // 해당 계좌 정보 조회
         const account = await this.findByAccountNumber(accountNumber);

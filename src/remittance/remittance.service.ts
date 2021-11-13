@@ -5,6 +5,7 @@ import { Balance } from '../balance/balance.entity';
 import { Account } from '../account/account.entity';
 import { Withdraw } from 'src/withdraw/withdraw.entity';
 import { Connection, QueryRunner, Repository } from 'typeorm';
+import { INVALID_REQUEST } from "../message/message"
 import { UpdateWithRemitDto } from './dto/update.dto';
 import { REMITTANCE_SUCCESS_MSG } from "../message/message";
 import { NotEnoughBalanceException } from "../exception/not_enough_balance_exception";
@@ -107,6 +108,8 @@ export class RemittanceService {
 
     async remit(updateWithdrawInfo: UpdateWithRemitDto, user: number): Promise<any> {
         const { withdrawAmount, toAccountNumber, fromAccountNumber } = updateWithdrawInfo;
+        if (withdrawAmount <= 0)
+            return INVALID_REQUEST;
         // 해당 출금 계좌 정보 조회
         const fromAccount = await this.findByAccountNumber(fromAccountNumber);
         // 해딩 입금 계좌 정보 조회

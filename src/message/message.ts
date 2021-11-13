@@ -35,3 +35,4 @@ export const LOGIN_FAIL_EXCEPTION_MSG = '로그인 실패하였습니다.';
 
 // == 404 == //
 export const NOT_FOUND_ACCOUNT_EXCEPTION_MSG = '존재하지 않는 계좌입니다.';
+export const INVALID_REQUEST = '0원과 음수는 거래할 수 없습니다.';

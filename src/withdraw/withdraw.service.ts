@@ -7,7 +7,8 @@ import { Deposit } from '../deposit/deposit.entity';
 import { Account } from '../account/account.entity';
 import { Withdraw } from './withdraw.entity';
 import { RemittanceService } from '../remittance/remittance.service'
-import { WITHDRAW_SUCCESS_MSG } from "../message/message"
+import { WITHDRAW_SUCCESS_MSG, INVALID_REQUEST } from "../message/message"
+
 @Injectable()
 export class WithdrawService extends RemittanceService {
 
@@ -21,6 +22,8 @@ export class WithdrawService extends RemittanceService {
 
   async withdrawMe(updateWithdrawInfo: UpdateWithDrawDto, user: number): Promise<any> {
     const { withdrawAmount, accountNumber } = updateWithdrawInfo;
+    if (withdrawAmount <= 0)
+      return INVALID_REQUEST;
     // 해당 계좌 정보 조회
     const account = await this.findByAccountNumber(accountNumber);
     // // 권한 조회
