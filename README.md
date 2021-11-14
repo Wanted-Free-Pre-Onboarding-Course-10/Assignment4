@@ -86,7 +86,7 @@
 [API문서](https://documenter.getpostman.com/view/13568025/UVC8Ckf6)
 
 ## API 테스트
-1. 우측 링크를 클릭해서 postman으로 들어갑니다.[링크](https://documenter.getpostman.com/view/13568025/UVC8Ckf6) 
+1. 우측 링크를 클릭해서 postman으로 들어갑니다.[링크](https://www.postman.com/martian-satellite-348039/workspace/10-8-api-test/collection/13568025-e7e58a7b-861c-4b91-b618-4b39fc890914) 
 2. Run in Postman 클릭해주세요 
 ![](https://images.velog.io/images/earthkingman/post/c717ed2f-2224-492c-8fbd-7421cdc176f3/image.png)
 3. 웹 버전은 API 요청이 불가능합니다. 응용프로그램을 실행시켜주세요
