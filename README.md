@@ -125,7 +125,7 @@ npm run start:dev
 | ------ | ----------------------------------------------- | -------------------------- |------------------|
 | 박지율 | [earthkingman](https://github.com/earthkingman) |송금(출입금) API, 리팩토링 |      [회고록]()          |
 | 염재선 | [Yeom Jae Seon](https://github.com/YeomJaeSeon) |DB설계, 테스트 데이터 추가 api, 리팩토링|   [회고록](https://yjs3819.tistory.com/69)                  |
-| 김태희 | [김태희](https://github.com/godtaehee)            |      |        [회고록]()            |
+| 김태희 | [김태희](https://github.com/godtaehee)            |      |        [회고록](https://medium.com/@godtaehee/week-2-8%ED%8D%BC%EC%84%BC%ED%8A%B8-%EA%B3%BC%EC%A0%9C%EB%A5%BC-%EB%A7%88%EC%B9%98%EA%B3%A0-bfa973117985)            |
 | 박상엽 | [큰형](  https://github.com/lotus0204)            | 회원가입,로그인 기능,API 보안      |     [회고록](https://velog.io/@lotus/Pre-Onboarding-%ED%9A%8C%EA%B3%A0Assignment-4)                   |
 
 
